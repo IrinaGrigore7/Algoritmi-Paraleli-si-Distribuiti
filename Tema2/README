@@ -1,0 +1,38 @@
+Grigore Irina-Domnica
+335CB
+		
+
+						Tema 2
+					Traffic Simulator
+
+	Detalii implementare:
+-> Cerinta 1: simple_semaphore
+	Pentru aceasta cerinta, in IntersectionHandlerFactory, in handle-ul corespunzator
+intersectiei SimpleIntersection, am simulat asteptarea masinilor la semafor
+prin punerea lor in sleep.
+
+-> Cerinta 2: simple_n_roundabout
+	In ReaderHandlerFactory, in handle-ul corespunzator intersectiei, 
+SimpleNRoundaboutIntersection, initializez un semafor cu numarul de masini care
+au voie sa intre in intersectia respectiva. In IntersectionHandlerFactory, in handle-ul 
+corespunzator, intai fac semaphore.acquire, permitand primelor x masini sa intre 
+in intersectie, apoi le pun sa astepte T milisecunde, iar dupa ce timpul a trecut,
+fac semaphor.release, permitandu-i altei masini sa intre in intersectie.
+
+-> Cerinta 3: simple_strict_1_car_roundabout
+	Pentru aceasta cerinta, m-am folosit de un vector de semafoare, avand
+lungimea egala cu numarul directiilor de deplasare, iar fiecare semafor l-am
+initizat cu 1, deoarece in intersectie trebuie sa intre o singura masina din 
+fiecare directie si am procedat ca la cerinta anterioara.
+
+-> Cerinta 5: simple_max_x_car_roundabout
+	Implementarea acestei cerinte este aceeasi cu cea de la task-ul 3,
+singura diferenta constand in faptul ca fiecare vector din vectorul de semafoare
+il initializez cu x, reprezentan numarul maxim de masini ce pot intra in sens.
+
+-> Cerinta 10: railroad
+	La acest task m-am folosit de o bariera pe care am initializat-o cu 
+numarul total al masinilor, precum si de doua cozi in care am retinut numarele
+masinilor in ordinea in care au ajuns la beriera, iar cea de-a doua coada am folosit-o
+pentru a salva directiile din care au venit masinile. Pentru metodele de adaugare, 
+respectiv scoatere si afisare a elementelor am folosit synchronized.
