@@ -1,0 +1,22 @@
+Grigore Irina-Domnica
+335CB
+
+							Tema 1
+				Generare paralela de fractali folosind 
+					multimile Mandelbrot si Julia
+
+
+	Detalii implementare paralela
+
+	Pentru inceput, in functia main am creat creat thread-utile, care primesc ca
+parametru functia thread_function, am initializat o bariera, am pus thread-urile
+in asteptare pana la termiarea threa-urilor secundare, apoi am distrus bariera.
+	In functia thread_function, un thread face citirea din fisierul Julia, precum si
+initializarea si alocarea variabilelor, celelalte thread-uri asteptand la bariera.
+Se apeleaza algoritmul Julia de fiecare thread in parte, impartind executia primului
+for la cele NUM_THREADS, iar dupa ce toate thread-urile au executat algoritmul,
+se realizeaza transformarea rezultatului din coordonate matematice, in coordonate
+ecran, aceasta executie facandu-se tot in paralel. Dupa finalizarea rularii algoritmului
+Julia de catre toate thread-urile, unul dintre thread-uri realizeaza scrierea rezultatului
+in fisierul de iesire si, de asemenea, elibereaza memoria alocata. Se procedeaza in 
+mod analog si pentru rularea algoritmului Mandelbrot.
